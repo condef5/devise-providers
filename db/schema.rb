@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_055308) do
     t.integer "rating"
     t.integer "duration"
     t.integer "price"
-    t.string "status"
+    t.integer "status"
     t.integer "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_055308) do
     t.text "description"
     t.integer "rating"
     t.integer "price"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

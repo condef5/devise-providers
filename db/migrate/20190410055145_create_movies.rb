@@ -6,7 +6,7 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.integer :rating
       t.integer :duration
       t.integer :price
-      t.string :status
+      t.integer :status
       t.integer :progress
 
       t.timestamps

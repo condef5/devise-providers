@@ -5,7 +5,7 @@ class CreateSeries < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :rating
       t.integer :price
-      t.string :status
+      t.integer :status
 
       t.timestamps
     end

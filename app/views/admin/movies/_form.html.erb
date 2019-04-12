@@ -1,8 +1,8 @@
-<%= form_for [:admin, @movie] do |f| %>
-  <% if movie.errors.any? %>
+<%= form_for [:admin, @movie] do |f| %>c
+  <% if @movie.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% movie.errors.full_messages.each do |message| %>
+        <% @movie.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

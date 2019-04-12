@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     root 'home#index'
     resources :movies
     resources :series
+    resources :rentals
   end
 end

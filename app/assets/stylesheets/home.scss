@@ -55,6 +55,12 @@ table th {
 
 .field {
   margin-top: 1em;
+
+  label {
+    min-width: 130px;
+    display: inline-block;
+  }
+
   input {
     padding: 3px 7.5px;
   }

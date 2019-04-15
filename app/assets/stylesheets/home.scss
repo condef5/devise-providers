@@ -4,20 +4,34 @@ body {
   letter-spacing: 0.75px;
 }
 
-a {
-  color: #067df7;
-  text-decoration: none;
-}
-
 nav {
   background: #000;
-  font-size: 14px;
   a {
     border-bottom: 1px solid #453886;
     color: #fff;
     padding-bottom: 0.25em;
     text-decoration: none;
   }
+}
+
+a {
+  color: #067df7;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+table td,
+table th {
+  border: 1px solid #dbdbdb;
+  border-width: 0 0 1px;
+  padding: 0.5em 0.75em;
+  vertical-align: center;
+  text-align: center;
 }
 
 .navbar {
@@ -52,17 +66,6 @@ nav {
   margin-right: -8px;
 }
 
-table {
-  width: 100%;
+.top-space {
   margin-top: 1em;
-  margin-bottom: 2em;
-}
-
-table td,
-table th {
-  border: 1px solid #dbdbdb;
-  border-width: 0 0 1px;
-  padding: 0.5em 0.75em;
-  vertical-align: center;
-  text-align: center;
 }

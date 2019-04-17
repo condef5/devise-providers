@@ -30,13 +30,13 @@ puts 'Creating data'
     )
   end
 
-  movie.rentals.create(
-    paid_price: rand(400) + 1
-  )
+  # movie.rentals.create(
+  #   paid_price: rand(400) + 1
+  # )
 
-  serie.rentals.create(
-    paid_price: rand(400) + 1
-  )
+  # serie.rentals.create(
+  #   paid_price: rand(400) + 1
+  # )
 end
 
 puts 'Seed data created'

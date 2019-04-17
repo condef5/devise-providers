@@ -1,8 +1,8 @@
-<%= form_for [:admin, @movie] do |f| %>
-  <% if @movie.errors.any? %>
+<%= form_for @serie, :url => url  do |f| %>
+  <% if @serie.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% @movie.errors.full_messages.each do |message| %>
+        <% @serie.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -25,11 +25,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :duration %>
-    <%= f.text_field :duration %>
-  </div>
-
-  <div class="field">
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
@@ -37,11 +32,6 @@
   <div class="field">
     <%= f.label :status %>
     <%= f.select :status, ["coming-soon", "preorder", "billboard"] %>
-  </div>
-
-  <div class="field">
-    <%= f.label :progress %>
-    <%= f.text_field :progress %>
   </div>
 
   <div class="actions">

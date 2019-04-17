@@ -2,8 +2,7 @@ class User < ApplicationRecord
   has_many :providers
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook github twitter]
-  
+         :omniauthable, omniauth_providers: %i[facebook github twitter google_oauth2]
   def self.from_omniauth(auth)
     user = where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email

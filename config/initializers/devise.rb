@@ -300,5 +300,6 @@ Devise.setup do |config|
   config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_SECRET'], {}
+  config.omniauth :instagram, ENV['INSTAGRAM_KEY'], ENV['INSTAGRAM_SECRET']
 
 end

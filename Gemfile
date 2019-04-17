@@ -60,3 +60,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-instagram' 

@@ -6,4 +6,7 @@ Rails.application.routes.draw do
     resources :series
     resources :rentals
   end
+  resources :movies, only: [:index, :show]
+  resources :series, only: [:index, :show]
+  resources :rentals, only: [:index, :show]
 end

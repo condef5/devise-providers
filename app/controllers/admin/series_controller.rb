@@ -4,7 +4,7 @@ class Admin::SeriesController < ApplicationController
   def index
     @series = Serie.all
     respond_to do |format|
-      format.html { render :index }
+      format.html { render "series/index" }
       format.json { render json: @series}
     end
   end
@@ -17,9 +17,9 @@ class Admin::SeriesController < ApplicationController
   end
   
   def show
+    render "movies/show" 
   end
 
-  
   def create
     @serie = Serie.new(serie_params)
     if @serie.save

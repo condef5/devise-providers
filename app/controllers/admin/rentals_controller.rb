@@ -3,6 +3,7 @@ class Admin::RentalsController < ApplicationController
 
   def index
     @rentals = Rental.all
+    render "rentals/index"
   end
 
   def new
@@ -13,6 +14,7 @@ class Admin::RentalsController < ApplicationController
   end
   
   def show
+    render "rentals/show"
   end
 
   

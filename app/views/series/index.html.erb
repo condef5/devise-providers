@@ -1,0 +1,40 @@
+<div>
+  <h2>List series</h2>
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'New serie', new_admin_series_path %>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th>Show</th>
+      <% if current_user && current_user.admin? %>
+        <th>Actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @series.each do |serie|%>
+        <tr>
+          <td><%= serie.title %></td>
+          <td><%= serie.description %></td>
+          <td><%= serie.rating %></td>
+          <td><%= serie.price %></td>
+          <td><%= serie.status %></td>
+          <td><%= link_to 'Show', admin_series_path(serie) %></td>
+          <% if current_user && current_user.admin? %>
+            <td>
+              <%= link_to 'Edit', edit_admin_series_path(serie) %>
+              <%= link_to 'Destroy', admin_series_path(serie), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

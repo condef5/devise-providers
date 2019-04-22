@@ -1,0 +1,44 @@
+<div>
+  <h2>List movies</h2>
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'New movie', new_admin_movie_path %>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Duration</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th>Progress</th>
+      <th>Show</th>
+      <% if current_user && current_user.admin? %>
+        <th>Actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie|%>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.description %></td>
+          <td><%= movie.rating %></td>
+          <td><%= movie.duration %></td>
+          <td><%= movie.price %></td>
+          <td><%= movie.status %></td>
+          <td><%= movie.progress %></td>
+          <td><%= link_to 'Show', admin_movie_path(movie) %></td>
+          <% if current_user && current_user.admin? %>
+            <td>
+              <%= link_to 'Edit', edit_admin_movie_path(movie) %>
+              <%= link_to 'Destroy', admin_movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

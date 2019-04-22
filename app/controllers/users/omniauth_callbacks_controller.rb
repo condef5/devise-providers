@@ -32,6 +32,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def instagram
+    nickname = request.env['omniauth.auth'].info.nickname
+    request.env['omniauth.auth']["info"]["email"] = "#{nickname}@gmail.com"
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+    if @user
+      sign_in_and_redirect @user
+      set_flash_message(:notice, :success, kind: 'Instagram')
+    else
+      session['devise.instagram_data'] = request.env['omniauth.auth']
+      redirect_to new_user_registration_url
+    end
+  end
+
   def google_oauth2
     @user = User.from_omniauth(request.env['omniauth.auth'])
 

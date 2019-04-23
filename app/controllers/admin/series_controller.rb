@@ -26,6 +26,7 @@ class Admin::SeriesController < ApplicationController
     @serie = Serie.new(serie_params)
     authorize [:admin, @serie]
     if @serie.save
+      SerieMailer.with(user: current_user, serie: @serie).serie_created.deliver_later
       redirect_to admin_series_path(@serie), notice: 'Serie was successfully created.'
     else
       render :new
@@ -36,6 +37,7 @@ class Admin::SeriesController < ApplicationController
     @serie = Serie.find(params[:id])
     authorize [:admin, @serie]
     if @serie.update(serie_params)
+      SerieMailer.with(user: current_user, serie: @serie).serie_updated.deliver_later
       redirect_to admin_series_path(@serie), notice: 'Serie was successfully updated.'
     else
       render :edit
@@ -44,6 +46,7 @@ class Admin::SeriesController < ApplicationController
 
   def destroy
     authorize [:admin, @serie]
+    SerieMailer.with(user: current_user, serie: @serie).serie_deleted.deliver_now
     @serie.destroy
     redirect_to admin_series_index_path, notice: 'Serie was successfully destroyed.'
   end

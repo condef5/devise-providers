@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
   resources :movies, only: [:index, :show]
   resources :series, only: [:index, :show]
-  resources :rentals, only: [:index, :show]
+  resources :rentals
 end

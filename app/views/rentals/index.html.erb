@@ -1,7 +1,7 @@
 <div>
   <h2>List rentals</h2>
-  <% if current_user && current_user.admin? %>
-    <%= link_to 'New rental', new_admin_rental_path %>
+  <% if current_user %>
+    <%= link_to 'New rental', new_rental_path %>
   <% end %>
 </div>
 
@@ -12,7 +12,7 @@
       <th>Precio</th>
       <th>Type</th>
       <th>Rentable</th>
-      <% if current_user && current_user.admin? %>
+      <% if current_user %>
         <th>Actions</th>
       <% end %>
     </tr>
@@ -24,7 +24,7 @@
           <td><%= rental.paid_price %></td>
           <td><%= rental.rentable_type %></td>
           <td><%= rental.rentable.title %></td>
-          <% if current_user && current_user.admin? %>
+          <% if current_user %>
             <td>
               <%= link_to 'Edit', edit_admin_rental_path(rental) %>
               <%= link_to 'Destroy', admin_rental_path(rental), method: :delete, data: { confirm: 'Are you sure?' } %>

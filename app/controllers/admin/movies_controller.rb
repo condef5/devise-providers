@@ -26,6 +26,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     authorize [:admin, @movie]
     if @movie.save
+      MovieMailer.with(user: current_user, movie: @movie).movie_created.deliver_later
       redirect_to admin_movie_path(@movie), notice: 'movie was successfully created.'
     else
       render :new
@@ -36,6 +37,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     authorize [:admin, @movie]
     if @movie.update(movie_params)
+      MovieMailer.with(user: current_user, movie: @movie).movie_updated.deliver_later
       redirect_to admin_movie_path(@movie), notice: 'movie was successfully updated.'
     else
       render :edit
@@ -44,6 +46,7 @@ class Admin::MoviesController < ApplicationController
 
   def destroy
     authorize [:admin, @movie]
+    MovieMailer.with(user: current_user, movie: @movie).movie_deleted.deliver_now
     @movie.destroy
     redirect_to admin_movies_path, notice: 'Movie was successfully destroyed.'
   end

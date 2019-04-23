@@ -11,18 +11,20 @@ class Admin::MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    authorize [:admin, @movie]
   end
 
   def edit
+    authorize [:admin, @movie]
   end
-  
+
   def show
     render "movies/show"
   end
 
-  
   def create
     @movie = Movie.new(movie_params)
+    authorize [:admin, @movie]
     if @movie.save
       redirect_to admin_movie_path(@movie), notice: 'movie was successfully created.'
     else
@@ -32,6 +34,7 @@ class Admin::MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
+    authorize [:admin, @movie]
     if @movie.update(movie_params)
       redirect_to admin_movie_path(@movie), notice: 'movie was successfully updated.'
     else
@@ -40,6 +43,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def destroy
+    authorize [:admin, @movie]
     @movie.destroy
     redirect_to admin_movies_path, notice: 'Movie was successfully destroyed.'
   end

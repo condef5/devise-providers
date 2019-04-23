@@ -7,7 +7,7 @@ class Admin::RentalPolicy < ApplicationPolicy
   end
 
   def create?
-    user.regular?
+    user.admin?
   end
 
   def new?
@@ -15,7 +15,7 @@ class Admin::RentalPolicy < ApplicationPolicy
   end
 
   def update?
-    user.regular?
+    user.admin?
   end
  
   def edit?
@@ -23,6 +23,6 @@ class Admin::RentalPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.regular?
+    user.admin?
   end
 end

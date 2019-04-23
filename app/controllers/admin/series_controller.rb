@@ -3,7 +3,7 @@ class Admin::SeriesController < ApplicationController
 
   def index
     @series = Serie.all
-    respond_to do |format|
+    respond_to do |format|}
       format.html { render "series/index" }
       format.json { render json: @series}
     end
@@ -11,17 +11,20 @@ class Admin::SeriesController < ApplicationController
 
   def new
     @serie = Serie.new
+    authorize [:admin, @serie]
   end
 
   def edit
+    authorize [:admin, @serie]
   end
   
   def show
-    render "movies/show" 
+    render "series/show" 
   end
 
   def create
     @serie = Serie.new(serie_params)
+    authorize [:admin, @serie]
     if @serie.save
       redirect_to admin_series_path(@serie), notice: 'Serie was successfully created.'
     else
@@ -31,6 +34,7 @@ class Admin::SeriesController < ApplicationController
 
   def update
     @serie = Serie.find(params[:id])
+    authorize [:admin, @serie]
     if @serie.update(serie_params)
       redirect_to admin_series_path(@serie), notice: 'Serie was successfully updated.'
     else
@@ -39,6 +43,7 @@ class Admin::SeriesController < ApplicationController
   end
 
   def destroy
+    authorize [:admin, @serie]
     @serie.destroy
     redirect_to admin_series_index_path, notice: 'Serie was successfully destroyed.'
   end

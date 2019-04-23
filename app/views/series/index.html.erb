@@ -27,7 +27,7 @@
           <td><%= serie.rating %></td>
           <td><%= serie.price %></td>
           <td><%= serie.status %></td>
-          <td><%= link_to 'Show', admin_series_path(serie) %></td>
+          <td><%= link_to 'Show', current_user.admin? ? admin_series_path(serie): series_path(serie) %></td>
           <% if current_user && current_user.admin? %>
             <td>
               <%= link_to 'Edit', edit_admin_series_path(serie) %>

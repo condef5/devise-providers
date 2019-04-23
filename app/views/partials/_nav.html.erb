@@ -8,6 +8,7 @@
       <%= link_to "Series", current_user.nil? || !current_user.admin? ? series_index_path : admin_series_index_path %>
       <%= link_to "Rentals", current_user.nil? || !current_user.admin? ? rentals_path : admin_rentals_path %>
       <% if current_user %>
+        <a href="#">Hi <%= current_user.email.split("@").first %></a>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', new_user_session_path %>

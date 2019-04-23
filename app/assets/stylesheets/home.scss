@@ -2,15 +2,32 @@ body {
   margin: 0;
   font-family: monospace, Helvetica, sans-serif;
   letter-spacing: 0.75px;
+  font-family: 14px;
 }
 
 nav {
   background: #000;
   a {
-    border-bottom: 1px solid #453886;
     color: #fff;
     padding-bottom: 0.25em;
     text-decoration: none;
+    transition: all 0.5s;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      margin-left: -15px;
+      width: 30px;
+      height: 2px;
+      background: #fff;
+      transition: transform 0.3s;
+      transform: scale3d(0, 1, 1);
+    }
+    &:hover:before {
+      transform: scale3d(1, 1, 1);
+    }
   }
 }
 

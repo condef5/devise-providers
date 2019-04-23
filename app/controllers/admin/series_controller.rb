@@ -3,7 +3,7 @@ class Admin::SeriesController < ApplicationController
 
   def index
     @series = Serie.all
-    respond_to do |format|}
+    respond_to do |format|
       format.html { render "series/index" }
       format.json { render json: @series}
     end

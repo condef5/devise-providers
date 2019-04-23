@@ -1,7 +1,7 @@
 <div>
   <h2>List rentals</h2>
   <% if current_user %>
-    <%= link_to 'New rental', new_rental_path %>
+    <%= link_to 'New rental', current_user.admin? ? new_admin_rental_path: new_rental_path %>
   <% end %>
 </div>
 

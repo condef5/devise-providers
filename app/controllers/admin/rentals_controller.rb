@@ -8,6 +8,7 @@ class Admin::RentalsController < ApplicationController
 
   def new
     @rental = Rental.new
+    authorize [:admin, @rental]
   end
 
   def edit
@@ -20,7 +21,9 @@ class Admin::RentalsController < ApplicationController
   
   def create
     @rental = Rental.new(rental_params)
+    authorize [:admin, @rental]
     if @rental.save
+      RentalMailer.with(user: current_user, rental: @rental).rental_created.deliver_later
       redirect_to admin_rental_path(@rental), notice: 'Serie was successfully created.'
     else
       render :new
@@ -29,7 +32,9 @@ class Admin::RentalsController < ApplicationController
 
   def update
     @rental = Rental.find(params[:id])
+    authorize [:admin, @rental]
     if @rental.update(rental_params)
+      RentalMailer.with(user: current_user, rental: @rental).rental_updated.deliver_later
       redirect_to admin_rental_path(@rental), notice: 'Serie was successfully updated.'
     else
       render :edit
@@ -37,7 +42,9 @@ class Admin::RentalsController < ApplicationController
   end
 
   def destroy
+    authorize [:admin, @rental]
     @rental.destroy
+    RentalMailer.with(user: current_user, rental: @rental).rental_deleted.deliver_now
     redirect_to admin_rentals_path, notice: 'Serie was successfully destroyed.'
   end
 

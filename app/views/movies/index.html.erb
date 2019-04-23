@@ -31,7 +31,7 @@
           <td><%= movie.price %></td>
           <td><%= movie.status %></td>
           <td><%= movie.progress %></td>
-          <td><%= link_to 'Show', admin_movie_path(movie) %></td>
+          <td><%= link_to 'Show', (current_user && current_user.admin?) ? admin_movie_path(movie): movie_path(movie) %></td>
           <% if current_user && current_user.admin? %>
             <td>
               <%= link_to 'Edit', edit_admin_movie_path(movie) %>

@@ -4,6 +4,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github twitter google_oauth2 instagram]
 
+  after_create :send_mail
+  
+  def send_mail
+    UserMailer.with(user: self).user_registered.deliver_now
+  end
+
   def self.from_omniauth(auth)
     user = where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email
